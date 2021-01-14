@@ -1,33 +1,41 @@
 <?php
 $data = [
-    "Products" => [
+    "products" => [
         "IT" => [
         "MacBook",
         "USB hub",
         "Keyboard"
     ],
-        "Other" =>[
+        "other" =>[
             "Samsung Galaxy",
             "Apple watch"
             ]
         ],
-    "Service" => [
-        "IT" => [
+    "service" => [
+        "iT" => [
             "Web development",
             "Web design"
         ],
-        "Business" => [
+        "business" => [
             "Company registration",
             "SEO optimization"
         ]
     ]];
+$value=[];
 ?>
 
 <ul>
-    <?php foreach ($data as $key => $value):?>
-    <li><span><?=$key;?></span><?=value;?>
+    <?php foreach ($data as $key => $category):?>
+    <li><strong><?=ucfirst($key);?></strong>: <!-- ucfirst pasako kad pirma raide didzioji turi buti , nes masyvo duomenis turi mazoiosmis raidemis parasytas -->
         <ul>
-            <li></li>
+            <?php foreach ($category as $type => $subcategory):?>
+            <li><?=ucfirst($type);?>:
+                <ul>
+                    <?php foreach($subcategory as $value):?>
+                    <li><?=$value;?></li>
+                    <?php endforeach;?>
+                </ul>
+                <?php endforeach;?>
         </ul>
     </li>
     <?php endforeach;?>
